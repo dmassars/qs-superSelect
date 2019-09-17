@@ -1,0 +1,8 @@
+{
+	"name" : "Super Select",
+	"description" : "Super Select Extension",
+	"icon" : "extension",
+	"type" : "visualization",
+	"version": "0.1",
+	"author": "daniel.massarsky@qlik.com"
+}
