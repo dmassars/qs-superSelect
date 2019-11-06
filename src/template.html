@@ -1,0 +1,36 @@
+<div id="err" style="overflow-wrap: break-word"></div>
+
+<div id={{$parent.$parent.layout.qInfo.qId}} class="menu-section" style="height: 100%; display: none" ng-class="$parent.$parent.navClass">
+
+    <div class="ui form" ng-if="layout.props.objectType == 'checkbox' || layout.props.objectType == 'radio'" style="height: 100%;" objecttype="{{layout.props.objectType}}" ng-class="{'{{layout.props.objectType}}':!isHorizontal}">
+        <div class="field" ng-class="{inline: layout.props.label.inline}">
+            <label ng-if="layout.props.label.show">{{layout.props.label.text}}</label>
+            <div class="ui" ng-repeat="item in items track by item.cId" ng-if="item.showCondition != '0'" ng-class="[layout.props.objectType, {checked: item.$isActiveItem}]" ng-click="item.go()">
+                <input ng-if="layout.props.objectType == 'checkbox'" type="checkbox" ng-model="item.$isActiveItem"
+                    ng-true-value="true" ng-false-value="false" id="inlineCheckbox1" ng-click="item.go()">
+                <input ng-if="layout.props.objectType == 'radio'" type="radio" ng-model="item.$isActiveItem"
+                    ng-value="!item.$isActiveItem" ng-click="item.go()">
+                <label>{{item.buttonLabel}}</label>
+            </div>
+        </div>
+    </div>
+    
+    <nav style="width: 100%" ng-show="layout.props.objectType == 'button' || !layout.props.objectType" role="navigation" class="navbar-nav pills">
+
+        <ul role="menubar" class="nav nav-pills" ng-class="[class, $parent.$parent.layout.props.verticalAlign, {'wrap-text': $parent.$parent.layout.props.wrapButtonText}]">
+
+            <label ng-if="layout.props.label.show && layout.props.label.text.length" style="color: rgba(0, 0, 0, 0.87); font-size: 12px; margin-right: 10px;">{{layout.props.label.text}}</label>
+            
+            <li ng-if="item.showCondition != '0'" id="li_item_{{item.cId}}" class="menu-item" ng-style="item.styleUpdate" role="presentation"
+                ng-repeat="item in items track by item.cId" ng-class="[item.parentClassList, $parent.$parent.layout.props.style.buttonSize]">
+
+                <a tabindex="0" id="a_item_{{item.cId}}" aria-current="{{ item.isActiveSheet  }}" ng-style="{'text-align': $parent.$parent.layout.props.textAlign || 'left'}" class="main-item mini" ng-class="item.classList" ng-click="item.go()" role="menuitem">
+                    <span ng-if="item.isActiveSheet" class="lui-icon lui-13 lui-icon--triangle-right" aria-label="Current Page"></span>
+                    <span class="nav-label">{{item.buttonLabel}}</span>
+                </a>
+
+            </li>
+        </ul>
+    </nav>
+
+</div>
