@@ -1,0 +1,8 @@
+{
+  "name" : "Super Select",
+  "description" : "Extension for creating buttons/radio/checkboxes with actions",
+  "icon" : "tick",
+  "type" : "visualization",
+  "version": "1.0",
+  "author": "Daniel Massarsky <daniel.massarsky@qlik.com>"
+}
